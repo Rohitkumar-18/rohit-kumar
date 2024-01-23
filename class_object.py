@@ -9,6 +9,11 @@ class mtca:
         self.sem = sem
     def update_mob(self,new):
         self.mobile=new
-        print('mobile number updated')    
-mohan=mtca('mohan',7678984543,'m@gmail.com','1st')
+        print('mobile number updated') 
+        def change_principal(cls,new):
+            cls.principal=new
+        @staticmethod
+        def add(a,b):
+            return a+b       
+mohan=mtca('mohan',7678984543,'m@gma:il.com','1st')
 

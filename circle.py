@@ -10,5 +10,6 @@ class circle():
     def diameter(self):
         d=2*self.radius
         return d
-s1=circle(5)  
+s1=circle(5)
+
       
