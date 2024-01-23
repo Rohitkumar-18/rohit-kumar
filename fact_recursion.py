@@ -1,6 +1,5 @@
-num=int(input('enter a number:-'))
-out=1
-while num>0:
-    out *=num
-    num-=1
-print(out)    
+def fact(a):
+    if a==1:
+        return 1
+    return a*fact(a-1)
+print(fact(18))
