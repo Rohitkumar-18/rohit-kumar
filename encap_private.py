@@ -11,4 +11,4 @@ class cname:
         print(cls.__a,cls.b)
 class sub(cname):
     pass        
-obj=sub(10,20)        
+obj=sub(10,200)        

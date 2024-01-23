@@ -1,4 +1,4 @@
-a='roopa'
+a='roopesh'
 i=0
 out=[]
 while i<len(a):
