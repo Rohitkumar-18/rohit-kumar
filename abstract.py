@@ -6,6 +6,8 @@ class Modelcar(ABC):
     @abstractmethod
     def speed_up():
       pass
+    def speed_down():
+        pass
 class Nexon(Modelcar):
     def __init__(self,speed=0,stop=True):
          self.speed=speed
@@ -18,7 +20,9 @@ class Nexon(Modelcar):
         self.speed=0
         self.stop=True
     def speed_down(self):
-         self.speed-=5
-         self.stop=False
-         print(f'accelerated by 6 km/hr and current speed is {self.speed}') 
+         if not self.stop:
+            self.speed-=5
+            if self.speed==0:
+             self.stop=True
+            print(f'speed down by 5km/hr and current speed is {self.speed}')
 obj=Nexon()                           
