@@ -1,4 +1,4 @@
-string=input('entera string')
+string=input('enter a string')
 out= ' '
 res=' '
 for char in string:
