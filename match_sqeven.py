@@ -1,7 +1,7 @@
 num=eval(input('enter a number'))
 match num%2:
     case 0:
-        print('squar',num**2)
+        print('square',num**2)
     case 1:
         print(num**3) 
     case _:
