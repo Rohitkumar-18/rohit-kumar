@@ -5,4 +5,4 @@ def fun(f):
         return f(a)
     return inner
 sample=fun(sample)
-print(sample)
+print(sample(5))
