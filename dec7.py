@@ -11,4 +11,9 @@ def duration(func):
 def question1():
     print('who is the principal of MCA in MTCA')
     response=input('enter your response :-') 
-question1()       
+@duration
+def question2():
+    print('which player has highest fan base in india')
+    response=input('enter your response :-') 
+question1() 
+question2()            
