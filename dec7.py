@@ -4,9 +4,11 @@ def duration(func):
         start=time.time()
         func()
         end=time.time()
-        print(f'the total time taken to answer the question is {end - start}secs')
-        return inner
+        print(f'the total time taken to answer the question is {end-start} secs')
+    return inner
+
 @duration
 def question1():
     print('who is the principal of MCA in MTCA')
-    response=input('enter your response :-')    
+    response=input('enter your response :-') 
+question1()       
