@@ -1,0 +1,4 @@
+<html>
+<body bgcolor=pink>
+<p>Welcome to django templates</p>
+</html>
