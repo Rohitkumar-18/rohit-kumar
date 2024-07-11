@@ -1,0 +1,8 @@
+<html>
+<form method="post" action="{%url 'process_student_entry'%}">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="Submit">
+<body bgcolor=green>
+</form>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html><html lang'"en">
+<head> <meta charset="UTF-8"> <title>Student Entry</title></head>
+<body bgcolor=pink> <h2>Student Entry Form</h2>
+<marquee>Please type student details</marquee>
+<form method="post" action="{% url 'process_student_entry' %}">
+{% csrf_token %}
+<table border=1>
+<tr><td><label for="StudentNumber">Student Number:</label></td>
+<td><input type="text" name="sno" required></td></tr>
+<tr><td><label for="Student Name">Student Name:</label></td>
+<td><input type="text" name="sname" required></td></tr>
+<tr><td><label for="age">Age:</label></td>
+<td><input type=-"text" name="age" required></td></tr>
+<tr><td colspan=2> <button type="submit">Submit</button></td></tr>
+</form>
+</body>
+</html>
+

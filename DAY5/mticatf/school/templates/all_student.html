@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><body><h1>Students</h1>
+<table border=1>
+<tr><th>Sno</th><th>Name</th><th>Age</th></tr>
+{% for x in data %}
+<tr>
+<td>{{x.sno}}</td>
+<td>{{x.sname}}</td>
+<td>{{x.age}}</td>
+
+</tr>
+{% endfor %}
+<body bgcolor=orange>
+</table>
+</body></html>

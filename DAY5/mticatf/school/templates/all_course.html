@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><body><h1>Course</h1>
+<table border=1>
+<tr><th>Cno</th><th>Name</th></tr>
+{% for x in data %}
+<tr>
+<td>{{x.cno}}</td>
+<td>{{x.cname}}</td>
+
+</tr>
+{% endfor %}
+<body bgcolor=pink>
+</table>
+</body></html>

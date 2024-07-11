@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang"en">
+<head> <meta charset="UTF-8"> <title>Course Entry</title></head>
+<body bgcolor=pink> <h2>Course Entry Form</h2>
+<marquee>Please type course details</marquee>
+<form method="post" action="{% url 'process_course_entry' %}">
+{% csrf_token %}
+<table border=1>
+<tr><td><label for="CourseNumber">Course Number:</label></td>
+<td><input type="text" name="cno" required></td></tr>
+<tr><td><label for="Course Name">Course Name:</label></td>
+<td><input type="text" name="cname" required></td></tr>
+<tr><td colspan=2> <button type="submit">Submit</button></td></tr>
+</form>
+</body>
+</html>
+
