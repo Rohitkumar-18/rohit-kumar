@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>BatchMaster</h1>
+<table border=1>
+<tr><th>batchNo</th><th>batchId</th></tr>
+{% for x in data %}
+<tr>
+<td> {{x.batchNo}}</td>
+<td>{{x.batchId}}</td>
+</tr>
+{% endfor %}
+<body bgcolor=orange>
+</table>
+</body>
+</html>
