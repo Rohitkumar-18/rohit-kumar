@@ -1,0 +1,35 @@
+from django.forms import ModelForm
+from django import forms
+
+from validation.models import User
+
+
+class UserForm(ModelForm):
+
+   # meta data for displaying a form
+   class Meta:
+      # model
+      model = User
+
+      # displaying fields
+      fields = '__all__'
+
+   # method for cleaning the data
+   def clean(self):
+      super(UserForm, self).clean()
+
+      # getting username and password from cleaned_data
+      username = self.cleaned_data.get('username')
+      password = self.cleaned_data.get('password')
+
+      # validating the username and password
+      if len(username) < 5:
+         self._errors['username'] = self.error_class(['A minimum of 5 alphabets is required'])
+         for i in username:
+             if i not in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz':
+                 self._errors['Username'] =self.error_class(['Username should only contain alphabets'])
+
+      if len(password) < 8:
+         self._errors['password'] = self.error_class(['Password length should not be less than 8 characters'])
+      return self.cleaned_data
+         

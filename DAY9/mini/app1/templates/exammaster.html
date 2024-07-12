@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<body bgcolor=violet>
+<head>
+<meta charset="UTF-8">
+<title>Exam Master</title>
+</head>
+<h2>Exam Master Form</h2>
+<marquee>Please type Exam details</marquee>
+<form method="post" action="{% url 'process_exam_entry' %}">
+{% csrf_token %}
+<table border=1>
+<tr><td><label for="examid">examid:</label></td>
+<td><input type="text" name="Examid" required></td></tr>
+<tr><td><label for="Examtype">Examtype:</label></td>
+<td><input type="text" name="Examtype" required></td></tr>
+<tr><td colspan=2>
+<button type="submit">Submit</button></td></tr>
+</form>
+</body>
+</html>

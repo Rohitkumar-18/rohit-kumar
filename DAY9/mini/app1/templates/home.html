@@ -1,0 +1,18 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Exam Master Entry</title>
+</head>
+<body bgcolor="orange">
+<h2>Exam</h2>
+<form action="" method="post">
+{%csrf_token %}
+{{form.as_p }}
+<div>
+<button type="submit" class="btn btn-success">Add details</button>
+</div>
+</form>
+</body>
+</html>

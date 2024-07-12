@@ -1,0 +1,12 @@
+<html>
+<body bgcolor=green>
+<form method="post" action="{% url 'process_exam_entry' %}">
+{% csrf_token %}
+<input type="submit" value="Submit">
+<td>
+<a href ="{% url 'insert_view' %}">
+<input type="button" value="Home"></button></a>
+</td>
+</body>
+</form>
+</html>

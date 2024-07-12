@@ -1,0 +1,38 @@
+{% load static %}
+<html>
+<center>
+<body bgcolor='yellow'>
+<head><h1>WELCOME TO MOTHER THERESA INSTITUTE OF COMPUTER APPLICATIONS</h1></head>
+<h2>Welcome to home page</h2>
+<img src="{% static 'img/pineapple.png' %}">
+<center>
+<br>
+<table border=1 align="center">
+<tr><th>ExamMaster</th>
+<td>
+<a href="{% url 'insert_view' %}">
+<input type="button" value="Add1"></button></a>
+</td>
+<td>
+<a href="{% url 'add_data' %}">
+<input type ="button" value="Add2"></button></a>
+</td>
+<td>
+<a href="{% url 'display_exam' %}">
+<input type ="button" value="View"></button></a>
+</td>
+<tr>
+<td>
+
+
+</td>
+</tr>
+</tr>
+</tr>
+</tr>
+</tr>
+</table>
+</center>
+</body>
+</html>
+
