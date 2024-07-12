@@ -1,0 +1,126 @@
+{% load static %}
+<html>
+<center>
+<body bgcolor=orange>
+<h1><img src="{% static 'img/logo.jpg' %}">
+Welcome to home page <img src="{% static 'img/logo.jpg' %}"></h1>
+
+<table border=1>
+ <tr>
+
+<td>Batch master</td>
+            <td><a href="{% url 'insert_view' %}" >  <button type="button">ADD1</button></a></td>
+            <td><a href="{% url 'displayBatchInput' %}" >  <button type="button">ADD2</button></a></td>
+            <td> <a href="{% url 'display_batch' %}" > <button type="button">VIEW</button></a></td>
+   </tr>
+
+  <tr>
+
+<td>Course master</td>
+            <td><a href="{% url 'insert1_view' %}" >  <button type="button">ADD1</button></a></td>
+            <td><a href="{% url 'displayCourseInput' %}" >  <button type="button">ADD2</button></a></td>
+            <td> <a href="{% url 'display_course' %}" > <button type="button">VIEW</button></a></td>
+   </tr>
+ <tr>
+
+<td>Exam master</td>
+            <td><a href="{% url 'insert2_view' %}" >  <button type="button">ADD1</button></a></td>
+            <td><a href="{% url 'displayExamInput' %}" >  <button type="button">ADD2</button></a></td>
+            <td> <a href="{% url 'display_exam' %}" > <button type="button">VIEW</button></a></td>
+   </tr>
+
+<tr>
+
+<td>Paper master</td>
+            <td><a href="{% url 'insert3_view' %}" >  <button type="button">ADD1</button></a></td>
+            <td><a href="{% url 'displayPaperInput' %}" >  <button type="button">ADD2</button></a></td>
+            <td> <a href="{% url 'display_paper' %}" > <button type="button">VIEW</button></a></td>
+   </tr>
+ <tr>
+
+
+<td>Sem master</td>
+            <td><a href="{% url 'insert4_view' %}" >  <button type="button">ADD1</button></a></td>
+            <td><a href="{% url 'displaySemInput' %}" >  <button type="button">ADD2</button></a></td>
+            <td> <a href="{% url 'display_sem' %}" > <button type="button">VIEW</button></a></td>
+   </tr>
+<tr>
+
+
+<td>Student master</td>
+            <td><a href="{% url 'insert5_view' %}" >  <button type="button">ADD1</button></a></td>
+            <td><a href="{% url 'displayStudentInput' %}" >  <button type="button">ADD2</button></a></td>
+            <td> <a href="{% url 'display_student' %}" > <button type="button">VIEW</button></a></td>
+   </tr>
+</table>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+
+    </div>
+  </li>
+</ul>
+
+</center>
+</body>
+</html>
+
+

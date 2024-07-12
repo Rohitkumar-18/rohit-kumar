@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8"><title>CourseMaster</title></head>
+<body bgcolor=pink> <h2> CourseMaster </h2>
+<marquee>Please Type CourseMaster Form Details</marquee>
+<form method="post" action="{% url 'process_course_entry' %}">
+{% csrf_token %}
+<table border=3>
+<tr><td><lable for="Course">Course</lable></td>
+<td><input type='text' name="Course" required></td></tr>
+
+<tr><td><lable for=" CourseId">CourseId</lable></td>
+<td><input type='text' name="CourseId" required></td></tr>
+
+
+<tr><td colspam="5" align="center">
+<button type="submit">Submit</button>
+<button type="cancel">Cancel</button>
+</td></tr>
+</forms>
+</body>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</html>
+

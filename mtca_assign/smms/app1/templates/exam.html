@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en">
+<head> <meta charset="UTF-8"> <title>Exam Entry</title></head>
+<body bgcolor=pink> <h2>ExamEntry Form</h2>
+<marquee>Please type Exam details</marquee>
+<form method="post" action="{% url 'process_exam_entry' %}">
+{% csrf_token %}
+<table border=1>
+ <tr> <td>  <label for="examId">examId</label></td>
+<td> <input type="text" name="examId" required></td></tr>
+
+<tr><td>  <label for ="ExamType">ExamType:</label></td>
+<td> <input type="text" name="ExamType" required></td></tr>
+
+
+
+<tr><td colspan="2" align="center" >  <button type="submit">Submit</button></td></tr>
+</table>
+</form>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</body>
+</html>
+
+

@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><body><h1>ExamMaster</h1>
+<table border=1>
+<tr><th>examId</th><th>examType</th></tr>
+{% for x in data %}
+<tr>
+	<td>{{x.examId}}</td>
+	<td>{{x.examType}}</td>
+</tr>
+{% endfor %}
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</body></html>

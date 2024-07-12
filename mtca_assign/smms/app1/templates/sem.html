@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en">
+<head> <meta charset="UTF-8"> <title>Sem Entry</title></head>
+<body bgcolor=pink> <h2>SemEntry Form</h2>
+<marquee>Please type sem details</marquee>
+<form method="post" action="{% url 'process_sem_entry' %}">
+{% csrf_token %}
+<table border=1>
+ <tr> <td>  <label for="sem">sem</label></td>
+<td> <input type="text" name="sem" required></td></tr>
+
+<tr><td>  <label for ="semId">semId:</label></td>
+<td> <input type="text" name="semId" required></td></tr>
+
+
+
+<tr><td colspan="2" align="center" >  <button type="submit">Submit</button></td></tr>
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</form>
+</body>
+</html>
+
+

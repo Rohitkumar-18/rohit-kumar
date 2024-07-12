@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en">
+<head> <meta charset="UTF-8"> <title>Paper Entry</title></head>
+<body bgcolor=pink> <h2>PaperEntry Form</h2>
+<marquee>Please type paper details</marquee>
+<form method="post" action="{% url 'process_paper_entry' %}">
+{% csrf_token %}
+<table border=1>
+ <tr> <td>  <label for="paperCode">paperCode</label></td>
+<td> <input type="text" name="paperCode" required></td></tr>
+
+<tr><td>  <label for ="paperType">paperType:</label></td>
+<td> <input type="text" name="paperType" required></td></tr>
+
+<tr><td>  <label for ="papershtName">papershtName:</label></td>
+<td> <input type="text" name="papershtName" required></td></tr>
+
+<tr><td>  <label for ="paperName">paperName:</label></td>
+<td> <input type="text" name="paperName" required></td></tr>
+
+
+<tr><td colspan="2" align="center" >  <button type="submit">Submit</button></td></tr>
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</form>
+</body>
+</html>
+
+

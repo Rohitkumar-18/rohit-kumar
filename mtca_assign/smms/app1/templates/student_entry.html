@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="en">
+<head> <meta charset="UTF-8"> <title>BatchMaster</title></head>
+<body bgcolor=pink> <h2>BatchMaster</h2>
+<marquee>Please type BatchMaster</marquee>
+
+<form method="post" action="{% url 'process_batch_entry' %}">
+	{% csrf_token %}
+
+<table border=1>
+<tr><td>
+	<label for="batchNo">batchNo</label>
+</td>
+<td>
+	<input type="text" name="batchNo" required>
+</td>
+</tr>
+
+<tr>
+<td>
+	<label for="batchId">batchId</label>
+</td>
+<td>
+	<input type="text" name="batchId" requrired>
+</td>
+</tr>
+	
+
+<tr>
+<td colspan=2>
+	<button type="submit">Submit</button>
+</td>
+</tr>
+</form>
+</body>
+</html>

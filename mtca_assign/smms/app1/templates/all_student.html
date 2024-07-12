@@ -1,0 +1,16 @@
+<!DOCTYPE html><html><body><h1>StudentMaster</h1>
+<table border=1>
+<tr><th>batchNo</th><th>sem</th><th>course</th><th>studregNo</th><th>studName</th></tr>
+{% for x in data %}
+<tr>
+	<td>{{x.batchNo}}</td>
+	<td>{{x.sem}}</td>
+        <td>{{x.course}}</td>
+        <td>{{x.studregNo}}</td>
+        <td>{{x.studName}}</td>
+</tr>
+{% endfor %}
+
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</body></html>

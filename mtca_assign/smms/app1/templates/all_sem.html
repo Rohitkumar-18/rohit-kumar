@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><body><h1>SemMaster</h1>
+<table border=1>
+<tr><th>sem</th><th>semId</th></tr>
+{% for x in data %}
+<tr>
+	<td>{{x.sem}}</td>
+	<td>{{x.semId}}</td>
+</tr>
+{% endfor %}
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</body></html>

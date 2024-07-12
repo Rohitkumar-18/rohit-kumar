@@ -1,0 +1,23 @@
+<!DOCTYPE html><html lang="en">
+<head> <meta charset="UTF-8"> <title>Student Entry</title></head>
+<body bgcolor=pink> <h2>BatchEntry Form</h2>
+<marquee>Please type student details</marquee>
+<form method="post" action="{% url 'process_batch_entry' %}">
+{% csrf_token %}
+<table border=1>
+ <tr> <td>  <label for="StudentNumber">StudentNumber</label></td>
+<td> <input type="text" name="sno" required></td></tr>
+
+<tr><td>  <label for ="Student name">Student Name:</label></td>
+<td> <input type="text" name="sname" required></td></tr>
+
+
+
+<tr><td colspan="2" align="center" >  <button type="submit">Submit</button></td></tr>
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</form>
+</body>
+</html>
+
+

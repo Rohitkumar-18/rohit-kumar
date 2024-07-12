@@ -1,0 +1,14 @@
+<!DOCTYPE html><html><body><h1>PaperMaster</h1>
+<table border=1>
+<tr><th>paperCode</th><th>paperType</th><th>papershtName</th><th>paperName</th></tr>
+{% for x in data %}
+<tr>
+	<td>{{x.paperCode}}</td>
+	<td>{{x.paperType}}</td>
+        <td>{{x.papershtName}}</td>
+        <td>{{x.paperName}}</td>
+</tr>
+{% endfor %}
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</body></html>
