@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><body bgcolor=pink><h1>Course</h1>
+<table border=1>
+<tr><th>Course</th><th>CourseId</th></tr>
+{% for x in data %}
+<tr>
+<td>{{x.course}}</td>
+<td>{{x.courseId}}</td>
+<td><a href="{% url 'delete' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+<tr>
+</body></html>
+

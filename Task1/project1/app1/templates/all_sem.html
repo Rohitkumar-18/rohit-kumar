@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><body bgcolor=lavender><h1>Sem</h1>
+<table border=1>
+<tr><th>Sem</th><th>SemId</th></tr>
+{% for x in data %}
+<tr>
+<td>{{x.sem}}</td>
+<td>{{x.semId}}</td>
+<td><a href="{% url 'delete' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+<tr>
+</body></html>
+

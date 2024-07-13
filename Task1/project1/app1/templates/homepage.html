@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<img src="{% static 'img/College Logo.jpg' %}">
+<style>
+h1 {
+ margin-left: 100px;
+ margin-top: -150px;
+ text-align: center;
+}
+
+body {
+background-color: green;
+}
+ul {
+ list-style-type: none;
+ margin: 0;
+ padding: 0;
+ overflow: hidden;
+ background-color: #35678b;
+}
+
+li {
+ float: left;
+}
+
+li a, .dropbtn {
+ display: inline-block;
+ color: white;
+ text-align: center;
+ padding: 14px 16px;
+ text-decoration: none;
+}
+li a:hover, .dropdown:hover .dropbtn {
+ background-color: gold;
+}
+li.dropdown {
+ display: inline-block;
+}
+.dropdown-content {
+ display: none;
+ position: absolute;
+ background-color: #f6f6f6;
+ min-width: 160px;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ z-index: 1;
+}
+.dropdown-content a {
+ color: black;
+ padding: 12px 16px;
+ text-decoration: none;
+ display: block;
+ text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover  .dropdown-content {
+ display: block;
+}
+</style>
+</head>
+<body background="{% static 'img/image7.jpg' %}" style="background-repeat:no-repeat;background-size:cover">
+
+<ul>
+<li class="dropdown">
+<a href="#home">HOME</a>
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">BatchMaster</a>
+  <div class="dropdown-content">
+    <a href="{%  url 'insert_view' %}">Insert</a>
+     <a href="{%  url 'insert_view' %}">Add2</a>
+    <a href="{%  url 'delete_batch' %}">Delete</a>
+    <a href="{%  url 'display_Batch' %}">View</a>
+ 
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">CourseMaster</a>
+  <div class="dropdown-content">
+    <a href="{%  url 'insert_courseview' %}">Insert</a>
+    <a href="{%  url 'displayCourseInput' %}">Delete</a>
+    <a href="{%  url 'display_Course' %}">View</a>
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">PaperMaster</a>
+  <div class="dropdown-content">
+    <a href="{%  url 'insert_paperview' %}">Insert</a>
+    <a href="{%  url 'displayPaperInput' %}">Delete</a>
+    <a href="{%  url 'display_Paper' %}">View</a>
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">SemMaster</a>
+  <div class="dropdown-content">
+    <a href="{%  url 'insert_semview' %}">Insert</a>
+    <a href="{%  url 'displaySemInput' %}">Delete</a>
+    <a href="{%  url 'display_Sem' %}">View</a>
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">ExamMaster</a>
+  <div class="dropdown-content">
+    <a href="{%  url 'insert_examview' %}">Insert</a>
+    <a href="{%  url 'displayExamInput' %}">Delete</a>
+    <a href="{%  url 'display_Exam' %}">View</a>
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">StudentMaster</a>
+  <div class="dropdown-content">
+    <a href="{%  url 'insert5_view' %}">Insert</a>
+    <a href="{%  url 'displayStudentInput' %}">Delete</a>
+    <a href="{%  url 'display_student' %}">View</a>
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">StudentInternalTransMaster</a>
+  <div class="dropdown-content">
+    <a href="{%  url 'insert6_view' %}">Insert</a>
+    <a href="{%  url 'displayStudentInternalTransInput' %}">Delete</a>
+    <a href="{%  url  'display_studentinternaltrans' %}">View</a>
+<li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">Reports</a>
+  <div class="dropdown-content">
+ <li class="dropdown">
+  <a href="javascript:void(0)" class active="dropbtn">Logout</a>
+  <div class="dropdown-content">
+     
+   
+
+  </div>
+</div>
+</li>
+</ul>
+<body>
+<center> 
+<h1>Mother Theresa Institution Of Computer Application</h1>
+<h2>Student Marks Management System<h2>
+<center>
+</table>
+</body>
+</html>
+

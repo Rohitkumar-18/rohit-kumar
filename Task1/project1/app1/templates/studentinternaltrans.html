@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en">
+<head> <meta charset="UTF-8"> <title>StudentInternalTrans Entry</title></head>
+<body bgcolor=pink> <h2>StudentInternalTransEntry Form</h2>
+<marquee>Please type studentinternaltrans details</marquee>
+<form method="post" action="{% url 'process_studentinternaltrans_entry' %}">
+{% csrf_token %}
+<table border=1>
+ <tr> <td>  <label for="Course">course</label></td>
+<td> <input type="text" name="course" required></td></tr>
+
+ <tr> <td>  <label for="batch">batch</label></td>
+<td> <input type="text" name="batch" required></td></tr>
+
+<tr><td>  <label for ="sem">sem:</label></td>
+<td> <input type="text" name="sem" required></td></tr>
+
+<tr><td>  <label for ="examType">examType:</label></td>
+<td> <input type="text" name="examType" required></td></tr>
+
+<tr><td>  <label for ="studregNo">studregNo:</label></td>
+<td> <input type="text" name="studregNo" required></td></tr>
+
+<tr><td>  <label for ="nameoftheStud">nameoftheStud:</label></td>
+<td> <input type="text" name="nameoftheStud" required></td></tr>
+
+<tr><td>  <label for ="paperCode">paperCode:</label></td>
+<td> <input type="text" name="papercode" required></td></tr>
+
+
+<tr><td colspan="2" align="center" >  <button type="submit">Submit</button></td></tr>
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</form>
+</body>
+</html>
+
+

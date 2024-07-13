@@ -1,0 +1,19 @@
+<!DOCTYPE html><html><body><h1>StudentInternalTransMaster</h1>
+<table border=1>
+<tr><th>course</th><th>batch</th><th>sem</th><th>examType</th><th>studregNo</th><th>nameoftheStud</th><th>paperCode</th></tr>
+{% for x in data %}
+<tr>      
+         <td>{{x.course}}</td>
+          <td>{{x.sem}}</td>
+	<td>{{x.batch}}</td>
+	<td>{{x.examType}}</td>  
+        <td>{{x.studregNo}}</td>
+        <td>{{x.nameoftheStud}}</td>
+        <td>{{x.paperCode}}</td>
+        
+</tr>
+{% endfor %}
+
+</table>
+<a href="{% url 'display_image' %}"><button type="button">HOME</button></a>
+</body></html>
