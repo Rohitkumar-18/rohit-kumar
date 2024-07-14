@@ -1,0 +1,12 @@
+<html>
+<body bgcolor=lavender>
+<form action="{% url 'process_Exam_entry' %}" method="post">
+{% csrf_token %}
+{{form}}
+<input type="submit" value="Submit">
+</form>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+<tr>
+</body>
+</html>

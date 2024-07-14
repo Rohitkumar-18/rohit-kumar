@@ -1,0 +1,20 @@
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Batch Master-Search</h3>
+<center>
+<form method="get">
+{{ form.as_p }}
+<button type="submit">Search</button>
+</form>
+<table border=1 align="center">
+
+{% if results %}
+<h3>Results:</h3>
+<tr>
+{% for item in results %}
+<td>{{ item.batchNo }}</td> 
+<td>{{ item.batchId }}</td> 
+{% endfor %}
+</tr>
+{% endif %}
+{% endblock %}

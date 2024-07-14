@@ -1,0 +1,28 @@
+
+<style>
+.align-btn{
+margin-left:500px;
+margin-top:100px;
+}
+.btn{
+margin-left:100px;
+margin-top:20px;
+}
+.btn2{
+margin-left:600px;
+margin-top:50px;
+}
+</style>
+<div class="align-btn">
+<h2> BatchMaster-Insert</h2>
+<form action="{% 'process_batch_entry' %}" method="post">
+{% csrf_token %}
+{{form}}
+<input type="submit" value="Submit">
+</form>
+</div>
+<tr>
+<td><button type="submit">HOME</button></a></td>
+<tr>
+</body>
+</html>

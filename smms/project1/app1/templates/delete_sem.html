@@ -1,0 +1,21 @@
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Sem Master-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>sem</th><th>semId</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.sem}}</td>
+<td>{{x.semId}}</td>
+</td>
+<td><a href="{% url 'delete3' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}

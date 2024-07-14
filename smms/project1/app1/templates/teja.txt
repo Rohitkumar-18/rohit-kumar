@@ -1,0 +1,101 @@
+<pre>
+
+
+
+
+
+
+
+
+</pre>
+<table border="2" style="border collapse:180px;width:40%;text-align:center;">
+<tr>
+<td>BATCHMASTER</td>
+<td>
+<a href="{%  url 'insert_view' %}">
+ADD1
+</a>
+</td>
+<td>
+<a href="{%  url 'displayBatchInput' %}">
+ADD2
+</a>
+</td>
+<td>
+<a href="{%  url 'display_Batch' %}">
+VIEW
+</a>
+</td>
+</tr>
+<tr>
+<td>COURSEMASTER</td>
+<td>
+<a href="{%  url 'insert_courseview' %}">
+ADD1
+</a>
+</td>
+<td>
+<a href="{%  url 'displayCourseInput' %}">
+ADD2
+</a>
+</td>
+<td>
+<a href="{%  url 'display_Course' %}">
+VIEW
+</a>
+</td>
+</tr>
+<tr>
+<td>PAPERMASTER</td>
+<td>
+<a href="{%  url 'insert_paperview' %}">
+ADD1
+</a>
+</td>
+<td>
+<a href="{%  url 'displayPaperInput' %}">
+ADD2
+</a>
+</td>
+<td>
+<a href="{%  url 'display_Paper' %}">
+VIEW
+</a>
+</td>
+</tr>
+<tr>
+<td>SEMMASTER</td>
+<td>
+<a href="{%  url 'insert_semview' %}">
+ADD1
+</a>
+</td>
+<td>
+<a href="{%  url 'displaySemInput' %}">
+ADD2
+</a>
+</td>
+<td>
+<a href="{%  url 'display_Sem' %}">
+VIEW
+</a>
+</td>
+</tr>
+<tr>
+<td>EXAMMASTER</td>
+<td>
+<a href="{%  url 'insert_examview' %}">
+ADD1
+</a>
+</td>
+<td>
+<a href="{%  url 'displayExamInput' %}">
+ADD2
+</a>
+</td>
+<td>
+<a href="{%  url 'display_Exam' %}">
+VIEW
+</a>
+</td>
+</tr>

@@ -1,0 +1,21 @@
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Exam Master-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>examId</th><th>examType</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.examId}}</td>
+<td>{{x.examType}}</td>
+</td>
+<td><a href="{% url 'delete4' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}

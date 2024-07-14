@@ -1,0 +1,22 @@
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Exam Master-Insert</h3>
+<center>
+<form method="post" action="{% url 'process_Exam_entry' %}">
+{% csrf_token %}
+<table border=1>
+<tr><td><label for="ExamId">ExamId:<label></td>
+<td><input type="text"name="examId" required></td><tr>
+<tr><td><label for="ExamTYPE">ExamTYPE:<label></td>
+<td><input type="text"name="examType" required></td><tr>
+<tr><td colspan="2"align="center"><button type="submit">Submit</button></td></tr>
+</table>
+</form>
+<form action="{% url 'display_image' %}">
+<table border=2>
+<tr>
+<td><button type="submit">Home</button></td><tr>
+</table>
+</body>
+</html>
+{% endblock %}

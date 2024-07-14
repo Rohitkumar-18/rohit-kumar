@@ -1,0 +1,18 @@
+{% extends "homepage.html" %}
+{% block content %}
+<h3>BatchMaster-View</h3>
+<center>
+<table border=1>
+<tr><th>Batchno</th><th>Batchid</th></tr>
+{% for x in data %}
+<tr>
+<td>{{x.batchNo}}</td>
+<td>{{x.batchId}}</td>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}
+

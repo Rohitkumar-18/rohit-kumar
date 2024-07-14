@@ -1,0 +1,18 @@
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Sem Master-View</h3>
+<center>
+<table border=1>
+<tr><th>Sem</th><th>SemId</th></tr>
+{% for x in data %}
+<tr>
+<td>{{x.sem}}</td>
+<td>{{x.semId}}</td>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+<tr>
+</center>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends "homepage.html" %}
+{% block content %}
+<h3>PaperMaster-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>paperCode</th><th>papertype</th><th>paperShtName</th><th>paperName</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.paperCode}}</td>
+<td>{{x.papertype}}</td>
+<td>{{x.paperShtName}}</td>
+<td>{{x.paperName}}
+</td>
+<td><a href="{% url 'delete2' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}
