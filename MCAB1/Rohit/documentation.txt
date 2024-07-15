@@ -1,0 +1,371 @@
+batch_all_edit
+
+
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Batch Master-Update</h3>
+<center>
+<table border=1>
+{% for i in data %}
+<tr>
+<td>{{i.id}}</td>
+<td>{{i.batchNo}}</td>
+<td>{{i.batchId}}</td>
+<td>
+<a href="{% url 'edit_batch' i.id %}">
+Edit
+</a>
+</td>
+</tr>
+
+{% endfor %}
+</table>
+</center>
+{% endblock %}
+
+batch_detail
+
+
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Batch Master</h3>
+<center>
+<p>Batch no: {{ Batch.batchNo }}</p>
+<p>Batch Id: {{ batch.batchId }}</p>
+<a href="{% url 'edit_batch' batch.id %}">Edit</a>
+</center>
+{% endblock %}
+
+batch_entry
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Batch Master-Insert</h3>
+<center>
+<form method="post" action="{% url 'process_batch_entry' %}">
+
+{% csrf_token %}
+<table border=1>
+<tr><td><label for="BatchNo">BatchNo:<label></td>
+<td><input type="text"name="batchNo" required></td><tr>
+<tr><td><label for="BatchId">BatchId:<label></td>
+<td><input type="text"name="batchId" required></td><tr>
+<tr><td colspan="2"align="center"><button type="submit">Submit</button></td></tr>
+</table>
+</form>
+<form action="{% url 'display_image' %}">
+<table border=2>
+<tr>
+<td><button type="submit">Home</button></td><tr>
+</table>
+</body>
+</html>
+{% endblock %}
+
+
+batch_view
+
+
+<style>
+.align-btn{
+margin-left:500px;
+margin-top:100px;
+}
+.btn{
+margin-left:100px;
+margin-top:20px;
+}
+.btn2{
+margin-left:600px;
+margin-top:50px;
+}
+</style>
+<div class="align-btn">
+<h2> BatchMaster-Insert</h2>
+<form action="{% 'process_batch_entry' %}" method="post">
+{% csrf_token %}
+{{form}}
+<input type="submit" value="Submit">
+</form>
+</div>
+<tr>
+<td><button type="submit">HOME</button></a></td>
+<tr>
+</body>
+</html>
+
+
+
+course_all_detail
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Course Master-Update</h3>
+<center>
+<table border=1>
+{% for i in data %}
+<tr>
+<td>{{i.id}}</td>
+<td>{{i.course}}</td>
+<td>{{i.courseId}}</td>
+<td>
+<a href="{% url 'edit_course' i.id %}">
+Edit
+</a>
+</td>
+</tr>
+
+{% endfor %}
+</table>
+</center>
+{% endblock %}
+
+course_detail
+
+
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Course Master</h3>
+<center>
+<p>course : {{ course.course}}</p>
+<p>Course Id: {{ course.coureId }}</p>
+<a href="{% url 'edit_course' i.id %}">Edit</a>
+</center>
+{% endblock %}
+
+course_entry
+
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Course Master-Insert</h3>
+<center>
+<form method="post" action="{% url 'process_course_entry' %}">
+{% csrf_token %}
+<table border=1>
+<tr><td><label for="Course Name">Course name:<label></td>
+<td><input type="text"name="course" required></td><tr>
+<tr><td><label for="CourseId">CourseId:<label></td>
+<td><input type="text"name="courseId" required></td><tr>
+<tr><td colspan="2"align="center"><button type="submit">Submit</button></td></tr>
+</table>
+</form>
+<form action="{% url 'display_image' %}">
+<table border=2>
+<tr>
+<td><button type="submit">Home</button></td><tr>
+</table>
+</body>
+</html>
+{% endblock %}
+
+
+delete_batch
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>BatchMaster-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>Batchno</th><th>Batchid</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.batchNo}}</td>
+<td>{{x.batchId}}</td>
+<td><a href="{% url 'delete' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+
+delete_course
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>CourseMaster-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>course</th><th>courseId</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.course}}</td>
+<td>{{x.courseId}}</td>
+<td><a href="{% url 'delete1' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+delete_exam
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Exam Master-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>examId</th><th>examType</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.examId}}</td>
+<td>{{x.examType}}</td>
+</td>
+<td><a href="{% url 'delete4' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+
+delete_paper
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>PaperMaster-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>paperCode</th><th>papertype</th><th>paperShtName</th><th>paperName</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.paperCode}}</td>
+<td>{{x.papertype}}</td>
+<td>{{x.paperShtName}}</td>
+<td>{{x.paperName}}
+</td>
+<td><a href="{% url 'delete2' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+
+delete_sem
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Sem Master-Delete</h3>
+<center>
+<table border="2">
+<tr><th>Id</th><th>sem</th><th>semId</th><th>Delete</th></tr></tr>
+{% for x in data %}
+<tr>
+<td>{{x.id}}</td>
+<td>{{x.sem}}</td>
+<td>{{x.semId}}</td>
+</td>
+<td><a href="{% url 'delete3' pk=x.id %}"><button type="button" style="margin-left: 5px;">delete</button></a></td>
+</tr>
+{% endfor %}
+</table>
+<tr>
+<td><a href="{% url 'display_image' %}"><button type="submit">HOME</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+edit_batch
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Edit Batch Master</h3>
+<center>
+<table border=1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+<table>
+<tr>
+<td><a href="{% url 'display_Batch' %}"><button type="submit">View</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+
+edit_course
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Edit Course Master</h3>
+<center>
+<table border=1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+<table>
+<tr>
+<td><a href="{% url 'display_Course' %}"><button type="submit">View</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+
+edit_paper
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Edit Paper Master</h3>
+<center>
+<table border=1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Changes</button>
+</form>
+<table>
+<tr>
+<td><a href="{% url 'display_paper' %}"><button type="submit">View</button></a></td>
+</tr>
+</center>
+{% endblock %}
+
+
+exam_entry
+
+{% extends "homepage.html" %}
+{% block content %}
+<h3>Exam Master-Insert</h3>
+<center>
+<form method="post" action="{% url 'process_Exam_entry' %}">
+{% csrf_token %}
+<table border=1>
+<tr><td><label for="ExamId">ExamId:<label></td>
+<td><input type="text"name="examId" required></td><tr>
+<tr><td><label for="ExamTYPE">ExamTYPE:<label></td>
+<td><input type="text"name="examType" required></td><tr>
+<tr><td colspan="2"align="center"><button type="submit">Submit</button></td></tr>
+</table>
+</form>
+<form action="{% url 'display_image' %}">
+<table border=2>
+<tr>
+<td><button type="submit">Home</button></td><tr>
+</table>
+</body>
+</html>
+{% endblock %}
