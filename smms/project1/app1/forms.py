@@ -39,7 +39,7 @@ class StudentInternalTransForm(forms.ModelForm):
 class SearchForm(forms.Form):
     query = forms.CharField(label='batchNo', max_length=100)
 
-class SearchForm2(forms.Form):
+class Search1Form2(forms.Form):
     query = forms.CharField(label='Course', max_length=100)    
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404, redirect
 from django . http import HttpResponse
 from django . template import loader
 from . forms import BatchForm
@@ -15,6 +15,9 @@ from . models import StudentMaster
 from . models import StudentInternalTransMaster
 from .forms import SearchForm
 
+
+
+# 
 
 # Create your views here.
 
@@ -245,17 +248,45 @@ def search_view(request):
 
 def search_Courseview(request):
     if request.method == 'GET':
-        form = SearchForm(request.GET)
+        form = SearchForm2(request.GET)
         if form.is_valid():
             query = form.cleaned_data.get('query')
-            results = CourseMaster.objects.filter(Course=query)  
+            results = CourseMaster.objects.filter(course=query)  
         else:
             results = None
     else:
-        form = SearchForm()
+        form = SearchForm2()
         results = None
     
-    return render(request, 'search_results2.html', {'form': form, 'results': results})
+    return render(request, 'search_course.html', {'form': form, 'results': results})
+
+
+
+def edit_batch(request, batch_id):
+    batch = get_object_or_404(BatchMaster,id=pk)
+    if request.method == 'POST':
+        form = BatchForm(request.POST, instance=batch)
+        if form.is_valid():
+            form.save()
+            return redirect('batch_detail', pk=pk)
+    else:
+        form = BatchForm(instance=batchs)
+    
+    return render(request, 'edit_batch.html', {'form': form})
+
+def batch_detail(request, pk):
+    batch = get_object_or_404(BatchMaster, id=pk)
+    return render(request, 'batch_detail.html', {'batch': batch})
+def batchmaster_details(request):
+    allbatch=BatchMaster.objects.all().values()
+    temp=loader.get_template('batchmaster_details.html')
+    context={
+        'data':allbatch
+        }
+    
+    return HttpResponse(temp.render(context,request))
+  
+
 
 
     

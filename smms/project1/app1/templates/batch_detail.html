@@ -1,0 +1,10 @@
+<!-- batch_detail.html -->
+<tr>
+<th>Batch No:</th>
+<th>Batch Id</th>
+</tr>
+<tr>
+<td>{{ batch.No}}</td>
+<td>{{ batch.Id}}</td>
+<a href="{% url 'batch_detail' book.id %}">Modify</a>
+{% endblock %}

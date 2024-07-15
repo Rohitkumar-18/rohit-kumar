@@ -72,27 +72,27 @@ li.dropdown {
 }
 </style>
 </head>
-<body background="{% static 'img/image1.jpg' %}" style="background-repeat:no-repeat;background-size:cover">
+<body background="{% static 'img/img1.jpg' %}" style="background-repeat:no-repeat;background-size:cover">
 
 <ul>
 <li class="dropdown">
-  <a href="javascript:void(0)" class active="dropbtn">BatchMaster</a>
+  <a href="javascript:void(0)" class active="dropbtn">Batch Master</a>
   <div class="dropdown-content">
     <a href="{%  url 'displayBatchInput' %}">Insert</a>
     <a href="{%  url 'delete_Batch' %}">Delete</a>
-    <a href="#modify">Modify</a>
+    <a href="{% url  'batchmaster_details' %}">Modify</a>
     <a href="{%  url 'display_Batch' %}">View</a>
     <a href="{%  url 'search' %}">Search</a>
 <li class="dropdown">
-  <a href="javascript:void(0)" class active="dropbtn">CourseMaster</a>
+  <a href="javascript:void(0)" class active="dropbtn">Course Master</a>
   <div class="dropdown-content">
     <a href="{%  url 'displayCourseInput' %}">Insert</a>
     <a href="{%  url 'delete_Course' %}">Delete</a>
-    <a href="{%  url 'display_Batch' %}">Modify</a>
+    <a href="{%  url 'display_Course' %}">Modify</a>
     <a href="{%  url 'display_Course' %}">View</a>
-    <a href="{%  url 'display_Batch' %}">Search</a>
+    <a href="{%  url 'search' %}">Search</a>
 <li class="dropdown">
-  <a href="javascript:void(0)" class active="dropbtn">PaperMaster</a>
+  <a href="javascript:void(0)" class active="dropbtn">Paper Master</a>
   <div class="dropdown-content">
     <a href="{%  url 'displayPaperInput' %}">Insert</a>
     <a href="{%  url 'delete_Paper' %}">Delete</a>
@@ -100,7 +100,7 @@ li.dropdown {
     <a href="{%  url 'display_Paper' %}">View</a>
     <a href="{%  url 'display_Batch' %}">Search</a>
 <li class="dropdown">
-  <a href="javascript:void(0)" class active="dropbtn">SemMaster</a>
+  <a href="javascript:void(0)" class active="dropbtn">Sem Master</a>
   <div class="dropdown-content">
     <a href="{%  url 'displaySemInput' %}">Insert</a>
     <a href="{%  url 'delete_Sem' %}">Delete</a>
@@ -108,7 +108,7 @@ li.dropdown {
     <a href="{%  url 'display_Sem' %}">View</a>
     <a href="{%  url 'display_Batch' %}">Search</a>
 <li class="dropdown">
-  <a href="javascript:void(0)" class active="dropbtn">ExamMaster</a>
+  <a href="javascript:void(0)" class active="dropbtn">Exam Master</a>
   <div class="dropdown-content">
     <a href="{%  url 'displayExamInput' %}">Insert</a>
     <a href="{%  url 'delete_Exam' %}">Delete</a>
@@ -116,7 +116,7 @@ li.dropdown {
     <a href="{%  url 'display_Exam' %}">View</a>
     <a href="{%  url 'display_Batch' %}">Search</a>
 <li class="dropdown">
-  <a href="javascript:void(0)" class active="dropbtn">StudentMaster</a>
+  <a href="javascript:void(0)" class active="dropbtn">Student Master</a>
   <div class="dropdown-content">
     <a href="{%  url 'insert_examview' %}">Insert</a>
     <a href="{%  url 'displayExamInput' %}">Add 2</a>
@@ -137,14 +137,14 @@ li.dropdown {
     <a href="{%  url 'insert_examview' %}">View</a>
     <a href="{%  url 'displayExamInput' %}">Print</a>
 <li class="dropdown">
-  <a href="javascript:void(0)" class active="dropbtn">Exist</a>
+  <a href="javascript:void(0)" class active="dropbtn">Logout</a>
   </div>
 </div>
 </li>
 </ul>
 <body> 
 <h1>MOTHER THERESA INSTITUTION OF COMPUTER APPLICATION</h1>
-<h2>Student Marks Management System</h2>
+<h2>STUDENT MARKS MANAGEMENT SYSTEM</h2>
 
 </table>
 </body>

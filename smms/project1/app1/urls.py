@@ -24,13 +24,13 @@ urlpatterns=[
     path('insert_courseview/',views.insert_courseview,name='insert_courseview'),
     path('delete1/<pk>/',views.delete1,name='delete1'),
     path('delete_Course/',views.delete_Course,name='delete_Course'),
-    path('search/', views.search_Courseview, name='search'),
+    path('search2/', views.search_Courseview, name='search2'),
     
     
     path('process_Paper_entry/',views.process_Paper_entry,name='process_Paper_entry'),
     path('displayPaperInput/',views.displayPaperInput,name='displayPaperInput'),
     path('insert_paperview/',views.insert_paperview,name='insert_paperview'),
-     path('delete2/<pk>/',views.delete2,name='delete2'),
+    path('delete2/<pk>/',views.delete2,name='delete2'),
     path('delete_Paper/',views.delete_Paper,name='delete_Paper'),
     
     
@@ -46,13 +46,10 @@ urlpatterns=[
     path('insert_examview/',views.insert_examview,name='insert_examview'),
     path('delete4/<pk>/',views.delete4,name='delete4'),
     path('delete_Exam/',views.delete_Exam,name='delete_Exam'),
-    
-   
 
-    
 
+    path('edit_batch/int:pk/', views.edit_batch, name='edit_batch'),
+    path('batch_detail/int:pk/', views.batch_detail, name='batch_detail'),
+    path('batchmaster_details/',views.batchmaster_details ,name='batchmaster_details'),
     
-    
-    
-    
-    ]
+]
