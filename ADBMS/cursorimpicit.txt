@@ -1,0 +1,55 @@
+create table eamcet1
+(regno number,
+name varchar2(20),
+maths number(3),
+phy number(3),
+chem number(3),
+tot number(3),
+rank number(3)
+);
+
+
+insert into eamcet1(regno,name,maths,phy,chem)
+values(&regno,'&name',&maths,&phy,&chem);
+
+declare
+cursor c1 is select * from eamcet1;
+cursor c2 is select tot from eamcet1 order by tot desc;
+tot eamcet1.tot%type;
+rank eamcet1.rank%type;
+n number;
+begin
+for i in c1
+loop
+update eamcet1 set tot=maths+phy+chem;
+end loop;
+n:=1;
+for j in c2
+loop
+update eamcet1 set rank =n where tot=j.tot;
+n:=n+1;
+end loop;
+end;
+/
+
+
+
+SQL> select * from eamcet1;
+
+     REGNO NAME                      MATHS        PHY       CHEM        TOT
+---------- -------------------- ---------- ---------- ---------- ----------
+      RANK
+----------
+         3 45                           67         54         34        155
+         2
+
+         5 56                           67         67         78        212
+         1
+
+SQL> select * from eamcet1;
+
+     REGNO NAME                      MATHS        PHY       CHEM        TOT       RANK
+---------- -------------------- ---------- ---------- ---------- ---------- ----------
+         3 45                           67         54         34        155          2
+         5 56                           67         67         78        212          1
+

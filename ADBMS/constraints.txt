@@ -1,0 +1,37 @@
+
+create table student1(id number(5) unique,
+name varchar2(10),course varchar2(6));
+
+create table student2(id number(5),
+name varchar2(10) not null,course varchar2(6));
+
+ create table student3(id number(5) primary key,
+ name varchar2(10),course varchar2(6));
+
+create table student4(id number(5) primary key,
+name varchar2(10),course varchar2(6));
+
+create table student5(id number(5) references student4(id),
+name varchar2(10),course varchar2(6));
+
+create table student6(id number(5),
+name varchar2(10),marks number(5) check(marks>=50));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

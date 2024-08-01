@@ -1,0 +1,121 @@
+create table customer
+(acno number,
+name varchar2(10),
+basic number,
+comm number
+);
+
+
+ 
+insert into customer(acno,name,basic)
+values(&acno,'&name',&basic);
+
+
+
+SQL*Plus: Release 11.2.0.1.0 Production on Sat Apr 20 09:46:06 2024
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: mtcab2388
+Enter password:
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> create table customer
+  2  (acno number,
+  3  name varchar2(10),
+  4  basic number,
+  5  comm number
+  6  );
+
+Table created.
+
+SQL> insert into customer(acno,name,basic)
+  2  values(&acno,'&name',&basic);
+Enter value for acno: 1
+Enter value for name: rohit
+Enter value for basic: 50000
+old   2: values(&acno,'&name',&basic)
+new   2: values(1,'rohit',50000)
+
+1 row created.
+
+SQL> /
+Enter value for acno: 2
+Enter value for name: balaji
+Enter value for basic: 40000
+old   2: values(&acno,'&name',&basic)
+new   2: values(2,'balaji',40000)
+
+1 row created.
+
+SQL> /
+Enter value for acno: 3
+Enter value for name: devi
+Enter value for basic: 3000
+old   2: values(&acno,'&name',&basic)
+new   2: values(3,'devi',3000)
+
+1 row created.
+
+SQL> /
+Enter value for acno: 4
+Enter value for name: mohan
+Enter value for basic: 20000
+old   2: values(&acno,'&name',&basic)
+new   2: values(4,'mohan',20000)
+
+1 row created.
+
+SQL> select * from customer;
+
+  
+SQL> select * from customer;
+
+      ACNO NAME            BASIC       COMM
+---------- ---------- ---------- ----------
+         1 rohit           50000     
+         2 balaji          40000      
+         3 devi             3000        
+         4 mohan           20000       
+
+SQL>
+
+
+
+
+declare
+cursor c is select * from customer;
+a customer%rowtype;
+begin
+open c;
+loop
+fetch c into a;
+exit when c%notfound;
+if a.basic>=6000 then
+a.comm:=a.basic*0.2;
+else
+if a.basic>=4000 and a.basic<6000 then
+a.comm:=a.basic*0.1;
+else
+a.comm:=a.basic*0.05;
+end if;
+end if;
+update customer set comm=a.comm where acno=a.acno;
+end loop;
+close c;
+end;
+/
+
+
+
+SQL> select * from customer;
+
+      ACNO NAME            BASIC       COMM
+---------- ---------- ---------- ----------
+         1 rohit           50000      10000
+         2 balaji          40000       8000
+         3 devi             3000        150
+         4 mohan           20000       4000

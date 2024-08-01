@@ -1,0 +1,191 @@
+CREATE TABLE EMPLOYEE5
+(Eno number(5),
+Ename varchar2(10),
+Ebasic number(8),
+Eda number(6),
+Ehra number(6),
+Egsal number(8)
+);
+
+
+
+
+SQL*Plus: Release 11.2.0.1.0 Production on Wed Jun 5 10:19:31 2024
+
+Copyright (c) 1982, 2010, Oracle.  All rights reserved.
+
+Enter user-name: mtcab2388
+Enter password:
+
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> CREATE TABLE client_master(
+  2  client idvarchar2(10) CHECK (client_id LIKE 'c%'),
+  3  client _name idvarchar2(10) CHECK (client_name=UPPER(client_name)),
+  4  client _city idvarchar2(10) CHECK (client_city IN('mumbai','chennai','new delhi','calcutta')),
+  5  client_add varchar2(15),
+  6  client_state varchar2(8),
+  7  client_balance number(8));
+client idvarchar2(10) CHECK (client_id LIKE 'c%'),
+                 *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL>
+SQL>
+SQL> CREATE TABLE client_master(
+  2  client _idvarchar2(10) CHECK (client_id LIKE 'c%'),
+  3  client _name idvarchar2(10) CHECK (client_name=UPPER(client_name)),
+  4  client _city idvarchar2(10) CHECK (client_city IN('mumbai','chennai','new delhi','calcutta')),
+  5  client_add varchar2(15),
+  6  client_state varchar2(8),
+  7  client_balance number(8));
+client _idvarchar2(10) CHECK (client_id LIKE 'c%'),
+       *
+ERROR at line 2:
+ORA-00911: invalid character
+
+
+SQL>
+SQL>
+SQL> client_balance number(8));
+SP2-0734: unknown command beginning "client_bal..." - rest of line ignored.
+SQL> CREATE TABLE client_master(
+  2  client idvarchar2(10) CHECK (client_id LIKE 'c%'),
+  3  client _name idvarchar2(10) CHECK (client_name=UPPER(client_name)),
+  4  client _city idvarchar2(10) CHECK (client_city IN('mumbai','chennai','new delhi','calcutta')),
+  5  client_add varchar2(15),
+  6  client_state varchar2(8),
+  7  client_balance number(8))
+  8
+SQL>
+SQL> CREATE TABLE EMPLOYEE
+  2  (Eno number(5),
+  3  Ename varchar2(10),
+  4  Ebasic number(8),
+  5  Eda number(6),
+  6  Ehra number(6),
+  7  Egsal number(8)
+  8  );
+CREATE TABLE EMPLOYEE
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> CREATE TABLE EMPLOYEE5
+  2  (Eno number(5),
+  3  Ename varchar2(10),
+  4  Ebasic number(8),
+  5  Eda number(6),
+  6  Ehra number(6),
+  7  Egsal number(8)
+  8  );
+
+Table created.
+
+SQL> insert into EMPLOYEE5(Eno,Ename,Ebasic) values(&Eno,'&Ename',&Ebasic);
+Enter value for eno: 1001
+Enter value for ename: rohit
+Enter value for ebasic: 30000
+old   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(&Eno,'&Ename',&Ebasic)
+new   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(1001,'rohit',30000)
+
+1 row created.
+
+SQL> /
+Enter value for eno: 1002
+Enter value for ename: rajasekar
+Enter value for ebasic: 20000
+old   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(&Eno,'&Ename',&Ebasic)
+new   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(1002,'rajasekar',20000)
+
+1 row created.
+
+SQL> /
+Enter value for eno: 1003
+Enter value for ename: mohan
+Enter value for ebasic: 40000
+old   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(&Eno,'&Ename',&Ebasic)
+new   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(1003,'mohan',40000)
+
+1 row created.
+
+SQL> /
+Enter value for eno: 1004
+Enter value for ename: devi
+Enter value for ebasic: 350000
+old   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(&Eno,'&Ename',&Ebasic)
+new   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(1004,'devi',350000)
+
+1 row created.
+
+SQL> /
+Enter value for eno: 1005
+Enter value for ename: jashu
+Enter value for ebasic: 24000
+old   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(&Eno,'&Ename',&Ebasic)
+new   1: insert into EMPLOYEE5(Eno,Ename,Ebasic) values(1005,'jashu',24000)
+
+1 row created.
+
+SQL> select * from EMPLOYEE5;
+
+       ENO ENAME          EBASIC        EDA       EHRA      EGSAL
+---------- ---------- ---------- ---------- ---------- ----------
+      1001 rohit           30000
+      1002 rajasekar       20000
+      1003 mohan           40000
+      1004 devi           350000
+      1005 jashu           24000
+
+SQL> update EMPLOYEE5 set Eda=Ebasic*0.15;
+
+5 rows updated.
+
+SQL> select * from EMPLOYEE5;
+
+       ENO ENAME          EBASIC        EDA       EHRA      EGSAL
+---------- ---------- ---------- ---------- ---------- ----------
+      1001 rohit           30000       4500
+      1002 rajasekar       20000       3000
+      1003 mohan           40000       6000
+      1004 devi           350000      52500
+      1005 jashu           24000       3600
+
+SQL> update EMPLOYEE5 set Ehra=Ebasic*0.25;
+
+5 rows updated.
+
+SQL> select * from EMPLOYEE5;
+
+       ENO ENAME          EBASIC        EDA       EHRA      EGSAL
+---------- ---------- ---------- ---------- ---------- ----------
+      1001 rohit           30000       4500       7500
+      1002 rajasekar       20000       3000       5000
+      1003 mohan           40000       6000      10000
+      1004 devi           350000      52500      87500
+      1005 jashu           24000       3600       6000
+
+SQL> update EMPLOYEE5 set Egsal=(Ebasic+Eda+Ehra);
+
+5 rows updated.
+
+SQL> select * from EMPLOYEE5;
+
+       ENO ENAME          EBASIC        EDA       EHRA      EGSAL
+---------- ---------- ---------- ---------- ---------- ----------
+      1001 rohit           30000       4500       7500      42000
+      1002 rajasekar       20000       3000       5000      28000
+      1003 mohan           40000       6000      10000      56000
+      1004 devi           350000      52500      87500     490000
+      1005 jashu           24000       3600       6000      33600
+
+SQL> commit;
+
+Commit complete.
+
+SQL>

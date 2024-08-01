@@ -1,0 +1,15 @@
+create table eamcet1
+(regno number,
+name varchar2(20),
+maths number(3),
+phy number(3),
+chem number(3),
+tot number(3),
+rank number(3)
+);
+
+
+insert into eamcet1(regno,name,maths,phy,chem)
+values(&regno,'&name',&maths,&phy,&chem);
+
+

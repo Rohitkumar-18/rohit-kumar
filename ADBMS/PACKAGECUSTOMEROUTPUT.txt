@@ -1,0 +1,34 @@
+SQL> INSERT INTO CUSTOMERS(ID,NAME,AGE,ADDRESS,SALARY)VALUES(4,'virat',35,'delhi',50000.00);
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMERS(ID,NAME,AGE,ADDRESS,SALARY)VALUES(5,'shreyanka',36,'kolkatha',30000.00);
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMERS(ID,NAME,AGE,ADDRESS,SALARY)VALUES(6,'saipallavi',37,'mumbai',70000.00);
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMERS(ID,NAME,AGE,ADDRESS,SALARY)VALUES(7,'rammohan',38,'kerala',80000.00);
+
+1 row created.
+
+SQL> INSERT INTO CUSTOMERS(ID,NAME,AGE,ADDRESS,SALARY)VALUES(8,'cbn',39,'kuppam',98000.00);
+
+1 row created.
+
+SQL> select * from CUSTOMERS;
+
+        ID NAME                        AGE ADDRESS                       SALARY
+---------- -------------------- ---------- ------------------------- ----------
+         1 ramesh                       32 ahmedabad                      20000
+         2 rajesh                       33 chittoor                       25000
+         3 mohan                        34 kolkatha                       30000
+         4 virat                        35 delhi                          50000
+         5 shreyanka                    36 kolkatha                       30000
+         6 saipallavi                   37 mumbai                         70000
+         7 rammohan                     38 kerala                         80000
+         8 cbn                          39 kuppam                         98000
+
+8 rows selected.

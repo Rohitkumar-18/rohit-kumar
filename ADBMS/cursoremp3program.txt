@@ -1,0 +1,72 @@
+create table employee2
+(eno number,
+ename varchar2(10),
+basic number,
+hra number,
+da number,
+it number,
+gsal number,
+netsal number
+);
+
+
+insert into employee2(eno,ename,basic)values(&eno,'&ename',&basic);
+
+
+declare
+ cursor d is select * from employee2;
+a employee2%rowtype;
+annual number;
+begin
+open d;
+loop
+fetch d into a;
+exit when d%notfound;
+if(a.basic<3000) then
+a.hra:=a.basic*0.05;
+a.da:=a.basic*0.05;
+else
+if(a.basic>=3000 and a.basic<4000) then
+a.hra:=a.basic*0.06;
+a.da:=a.basic*0.05;
+else
+if(a.basic>=4000 and a.basic<6000) then
+a.hra:=a.basic*0.01;
+a.da:=a.basic*0.01;
+else
+a.hra:=a.basic*0.12;
+a.da:=a.basic*0.01;
+end if;
+end if;
+end if;
+a.gsal:=a.basic+a.hra+a.da;
+annual:=(12*a.gsal);
+if(annual<=20000) then
+a.it:=0;
+else
+if((annual>20000) and (annual<=40000)) then
+a.it:=500;
+else
+a.it:=1000;
+end if;
+end if;
+a.netsal:=(a.gsal-a.it);
+update employee2 set hra=a.hra,da=a.da,it=a.it,gsal=a.gsal,netsal=a.netsal where eno=a.eno;
+end loop;
+close d;
+end;
+
+SQL> select * from employee2;
+
+       ENO ENAME           BASIC        HRA         DA         IT       GSAL     NETSAL
+---------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
+         2 rohit            2300        115        115        500       2530       2030
+         4 raju              500         40         40       1000       4080       3080
+         4 mohan            4000         40         40       1000       4080       3080
+         6 virat             400         20         20          0        440        440
+         8 bala             2000        100        100        500       2200       1700
+
+
+
+
+
