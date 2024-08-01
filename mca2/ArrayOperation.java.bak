@@ -1,0 +1,153 @@
+import java.io.*;
+import java.util.Scanner;
+class ArrayOperation
+{
+	private int[] theArray;
+	private int capacity;
+	private int size;
+	public ArrayOperation()
+	{
+		capacity=30;
+		size=1;
+		theArray=new int[capacity];
+	}
+	  public void insertAtLast(int ele)
+	{
+		if(size==capacity)
+		{
+			return;
+		}
+		else
+		{
+			theArray[size++]=ele;
+		}
+	}
+	public void print()
+	{
+		for(int i=1;i<size;i++)
+		{
+			System.out.println(""+theArray[i]+" ");
+		}
+	}
+      public void delete(int pos)
+	{
+	int i=size;
+	while(pos<i)
+		{
+		theArray[pos]=theArray[pos+1];
+		pos++;
+		}
+		size=size-1;
+	}
+	  public void delet(int pos)
+	{
+	int del_ele=theArray[size-1];
+	System.out.println("Last element in the array is"+del_ele+"deleted");
+	size--;
+	}
+	public void addAtMiddle(int ele,int pos)
+	{
+		int i=size;
+		while(i>=pos)
+		{
+			theArray[i+1]=theArray[i];
+			i--;
+		}
+		size++;
+		theArray[pos]=ele;
+	}
+	public void sort()
+	{
+		for(int i=1;i<size-1;i++)
+			for(int j=i+1;j<size;j++)
+		{
+			int temp=theArray[i];
+			theArray[i]=theArray[j];
+			theArray[j]=temp;
+		}
+	}
+      public void search (int ele)
+{
+	boolean flag=true;
+	for(int i=1;i<size;i++)
+		if(theArray[i]==ele)
+	{
+		System.out.println("\n\t search is successfull");
+		System.out.println("\n\t element found at\t"+i+"\t location");
+		flag=false;
+		break;
+	}
+	if(flag)
+	{
+		System.out.println("\n\t search is un successfull");
+		System.out.println("\n\t element is not there in an array");
+}
+}
+}
+
+class ArrayOperationImplementation
+{
+	public static void main(String args[])
+	{
+		ArrayOperation ao=new ArrayOperation();
+		int ele,pos;
+		while(true)
+		{
+			Scanner s=new Scanner(System.in);
+			System.out.println("*** MENU for array operation***");
+			System.out.println("\n\t 1.insertion at last \n\t 2.insert element at middle \n\t3.delete at last \n\t 4.delete at middle \n\t 5.sorting \n\t 6.searching \n\t 7.traversing");
+			System.out.println("Enter your choice");
+			int ch=s.nextInt();
+			switch(ch)
+			{
+				case 1:
+					System.out.println("please enter the element to be inserted");
+				ele=s.nextInt();
+				ao.insertAtLast(ele);
+				break;
+				case 2:
+						System.out.println("please enter the element to be inserted");
+				ele=s.nextInt();
+					System.out.println("please enter the position where element to be inserted");
+					pos=s.nextInt();
+					ao.addAtMiddle(ele,pos);
+					break;
+					case 3:
+						System.out.println("\n\t please delete the element at last");
+						ao.deleteAtLast();
+					break;
+					case 4:
+							System.out.println("please enter the positon delete the element");
+					pos=s.nextInt();
+					break;
+					case 5:
+							System.out.println("\n\t elemnts in the array are sorted,please select traverse to see the sorted elements::");
+					ao.sort();
+					break;
+					case 6:
+							System.out.println("enter the element to be search");
+					int ser_ele=s.nextInt();
+					ao.search(ser_ele);
+					break;
+					case 7:
+							System.out.println("\n \t the elements in the array are:");
+					ao.print();
+					break;
+					default:
+							System.out.println("invalid option");
+			}
+				System.out.println("\n \t do you want to continue");
+				char say=s.next().charAt(0);
+				if(say=='N'||say=='n')
+			{
+						System.out.println("Thank you and my work is over");
+						break;
+			}
+		}
+	}
+}
+				
+					
+
+
+
