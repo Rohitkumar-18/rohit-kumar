@@ -1,0 +1,226 @@
+Explicit Cursor
+
+create table cust(
+acno number,
+name varchar2(20),
+basic number,
+commission number
+);
+
+
+insert into cust(acno,name,basic)
+values(&acno,'&name',&basic);
+
+
+
+SQL> select * from cust;
+
+      ACNO NAME                      BASIC COMMISSION
+---------- -------------------- ---------- ----------
+         1 Yash                       7900
+         2 Rocky                      6400
+         3 Rohit                      4600
+         4 Teju                       3576
+         5 Sai                        2345
+         6 Shannu                     7000
+
+6 rows selected.
+
+
+
+declare
+cursor s is select * from cust;
+a cust%rowtype;
+begin
+open s;
+loop
+fetch s into a;
+exit when s%notfound;
+if a.basic>=6000 then
+a.commission:=a.basic*0.2;
+else
+if a.basic>=4000 and a.basic<6000 then
+a.commission:=a.basic*0.1;
+else
+a.commission:=a.basic*0.05;
+end if;
+end if;
+update cust set commission=a.commission where acno=a.acno;
+end loop;
+close s;
+end;
+/
+
+
+
+select * from cust;
+
+      ACNO NAME                      BASIC COMMISSION
+---------- -------------------- ---------- ----------
+         1 Yash                       7900       1580
+         2 Rocky                      6400       1280
+         3 Rohit                      4600        460
+         4 Teju                       3576      178.8
+         5 Sai                        2345     117.25
+         6 Shannu                     7000       1400
+
+6 rows selected.
+
+
+
+Implicit Cursor
+
+create table eamcet(
+regno number,
+name varchar2(10),
+maths number,
+phy number,
+che number,
+tot number,
+rank number
+);
+
+
+insert into eamcet(regno,name,maths,phy,che)values(&regno,'&name',&maths,&phy,&che);
+
+
+select * from eamcet;
+
+     REGNO NAME            MATHS        PHY        CHE        TOT       RANK
+---------- ---------- ---------- ---------- ---------- ---------- ----------
+      5879 aa                 78         36         38
+      4345 bb                 76         40         30
+      5668 cc                 40         40         40
+      4568 dd                 80         20         35
+      5567 ee                 60         34         39
+
+
+
+declare
+cursor c1 is select * from eamcet;
+cursor c2 is select tot from eamcet order by tot desc;
+tot eamcet.tot%type;
+rank eamcet.rank%type;
+n number;
+begin
+for i in c1
+loop
+update eamcet set tot=maths+phy+che;
+end loop;
+n:=1;
+for j in c2
+loop
+update eamcet set rank=n where tot=j.tot;
+n:=n+1;
+end loop;
+end;
+/
+
+
+
+select * from eamcet;
+
+     REGNO NAME            MATHS        PHY        CHE        TOT       RANK
+---------- ---------- ---------- ---------- ---------- ---------- ----------
+      5879 aa                 78         36         38        152          1
+      4345 bb                 76         40         30        146          2
+      5668 cc                 40         40         40        120          5
+      4568 dd                 80         20         35        135          3
+      5567 ee                 60         34         39        133          4
+
+
+
+
+
+
+
+
+
+
+create table employee
+(eno number,
+ename varchar2(10),
+basic number,
+da number,
+it number,
+gsal number,
+netsal number);
+
+
+insert into employee(eno,ename,basic)values(&eno,'&ename',&basic);
+
+
+
+declare
+annual number;
+cursor d is select * from employee;
+a employee%rowtype;
+begin
+open d;
+loop
+fetch d into a;
+exit when d%notfound;
+if(a.basic<3000)then 
+	a.hra:=a.basic*0.05;
+	a.da:=a.basic*0.05;
+else
+if(a.basic>=3000 and a.basic<4000) then
+	a.hra:=a.basic*0.06;
+	a.da:=a.basic*0.05;
+else
+if(a.basic>=4000 and a.basic<6000) then
+	a.hra:=a.basic*0.01;
+	a.da:=a.basic*0.01;
+else
+	a.hra:=a.basic*0.12;
+	a.da:=a.basic*0.01;
+end if;
+end if;
+end if;
+a.gsal:=a.basic+a.hra+a.da;
+annual:=(12*a.gsal);
+if(annual<=20000) then
+	a.it:=0;
+else
+if((annual>20000) and (annual<=40000))then
+	a.it:=500;
+else
+	a.it:=1000;
+end if;
+end if;
+a.netsal:=(a.gsal-a.it);
+update employee set hra=a.hra,da=a.da,it=a.it,gsal=a.gsal,netsal=a.netsal where eno=a.eno;
+end loop;
+close d;
+end;
+/
+
+
+
+
+
+cursor done during exam on 24/04/2024
+
+
+declare
+cursor c is select * from yashemp;
+a yashemp%rowtype;
+begin 
+open c;
+loop
+fetch c into a;
+exit when c%notfound;
+if a.netsal>=15000 then
+a.bonus:=a.netsal*0.10;
+else
+if a.netsal>15000 and a.netsal<=20000 then
+a.bonus:=a.netsal*0.11;
+else
+a.bonus:=a.netsal*0.12;
+end if;
+end if;
+update yashemp set bonus=a.bonus where eid=a.eid;
+end loop;
+close c;
+end;
+/

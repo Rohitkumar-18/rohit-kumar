@@ -1,0 +1,18 @@
+ declare
+   a number:=&a;
+   b number:=&b;
+   c number:=&c;
+   big number;
+   begin
+   if(a>b and a>c) then
+   big:=a;
+   else
+   if(b>c and b>a) then
+   big:=b;
+   else
+  big:=c;
+   end if;
+   end if;
+   dbms_output.put_line(big);
+   end;
+   /

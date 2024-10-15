@@ -1,0 +1,316 @@
+
+SQL> create table yashemp(eid number(10),
+  2  ename varchar2(20),dept varchar2(10),sector varchar2(2),shift varchar2(2));
+
+Table created.
+
+SQL> desc yashemp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(10)
+ ENAME                                              VARCHAR2(20)
+ DEPT                                               VARCHAR2(10)
+ SECTOR                                             VARCHAR2(2)
+ SHIFT                                              VARCHAR2(2)
+
+SQL> insert into yashemp values(&eid,'&ename','&dept','&sector','&shift');
+Enter value for eid: 1001
+Enter value for ename: rasi
+Enter value for dept: technical
+Enter value for sector: a
+Enter value for shift: b
+old   1: insert into yashemp values(&eid,'&ename','&dept','&sector','&shift')
+new   1: insert into yashemp values(1001,'rasi','technical','a','b')
+
+1 row created.
+
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SE SH
+---------- -------------------- ---------- -- --
+      1001 rasi                 technical  a  b
+      1002 chai                 technical  b  a
+      1003 Dhamu                Production a  b
+      1004 Hema                 Assembling c  b
+      1005 pooji                accouts    1  1
+      1006 basha                managing   1  1
+
+
+
+
+SQL> alter table yashemp add salary number(20);
+
+Table altered.
+
+SQL> desc yashemp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(10)
+ ENAME                                              VARCHAR2(20)
+ DEPT                                               VARCHAR2(10)
+ SECTOR                                             VARCHAR2(2)
+ SHIFT                                              VARCHAR2(2)
+ SALARY                                             NUMBER(20)
+
+
+
+
+SQL> alter table yashemp modify shift varchar2(10);
+
+Table altered.
+
+SQL> alter table yashemp modify sector varchar2(10);
+
+Table altered.
+
+SQL> desc yashemp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(10)
+ ENAME                                              VARCHAR2(20)
+ DEPT                                               VARCHAR2(10)
+ SECTOR                                             VARCHAR2(10)
+ SHIFT                                              VARCHAR2(10)
+ SALARY                                             NUMBER(20)
+
+
+
+SQL> update yashemp set dept='accounts'  where eid=1005;
+
+1 row updated.
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          SALARY
+---------- -------------------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b
+      1002 chai                 technical  b          a
+      1003 Dhamu                Production a          b
+      1004 Hema                 Assembling c          b
+      1005 pooji                accounts   1          1
+      1006 basha                managing   1          1
+
+6 rows selected.
+
+
+SQL> alter table yashemp rename column salary to netsal;
+
+Table altered.
+
+SQL> desc yashemp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                                NUMBER(10)
+ ENAME                                              VARCHAR2(20)
+ DEPT                                               VARCHAR2(10)
+ SECTOR                                             VARCHAR2(10)
+ SHIFT                                              VARCHAR2(10)
+ NETSAL                                             NUMBER(20)
+
+
+SQL> set lines 100 pages 100;
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          NETSAL      BONUS      TOTAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b
+      1002 chai                 technical  b          a
+      1003 Dhamu                Production a          b
+      1004 Hema                 Assembling c          b
+      1005 pooji                accounts   1          1
+      1006 basha                managing   1          1
+
+
+SQL> update yashemp set netsal=&netsal where eid=&eid;
+Enter value for netsal: 12000
+Enter value for eid: 1001
+old   1: update yashemp set netsal=&netsal where eid=&eid
+new   1: update yashemp set netsal=12000 where eid=1001
+
+1 row updated.
+
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          NETSAL      BONUS      TOTAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b               12000
+      1002 chai                 technical  b          a               15000
+      1003 Dhamu                Production a          b               10000
+      1004 Hema                 Assembling c          b               17000
+      1005 pooji                accounts   1          1               25000
+      1006 basha                managing   1          1               20000
+
+6 rows selected.
+
+
+Cursor creation to calculate bonus
+
+
+SQL> declare
+  2  cursor c is select * from yashemp;
+  3  a yashemp%rowtype;
+  4  begin
+  5  open c;
+  6  loop
+  7  fetch c into a;
+  8  exit when c%notfound;
+  9  if a.netsal>=15000 then
+ 10  a.bonus:=a.netsal*0.10;
+ 11  else
+ 12  if a.netsal>15000 and a.netsal<=20000 then
+ 13  a.bonus:=a.netsal*0.11;
+ 14  else
+ 15  a.bonus:=a.netsal*0.12;
+ 16  end if;
+ 17  end if;
+ 18  update yashemp set bonus=a.bonus where eid=a.eid;
+ 19  end loop;
+ 20  close c;
+ 21  end;
+ 22  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          NETSAL      BONUS      TOTAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b               12000       1440
+      1002 chai                 technical  b          a               15000       1500
+      1003 Dhamu                Production a          b               10000       1200
+      1004 Hema                 Assembling c          b               17000       1700
+      1005 pooji                accounts   1          1               25000       2500
+      1006 basha                managing   1          1               20000       2000
+
+6 rows selected.
+
+Trigger creation for column total
+
+SQL> create trigger t3 after insert or update of eid on yashemp
+  2  begin
+  3  update yashemp set total=netsal+bonus;
+  4  end;
+  5  /
+
+Trigger created.
+
+insertion step
+
+SQL> insert into yashemp(eid,ename,dept,sector,shift,netsal,bonus)values(1007,'neeraj','testing','a','a',20000,2000);
+
+1 row created.
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          NETSAL      BONUS      TOTAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b               12000       1440      13440
+      1002 chai                 technical  b          a               15000       1500      16500
+      1003 Dhamu                Production a          b               10000       1200      11200
+      1004 Hema                 Assembling c          b               17000       1700      18700
+      1005 pooji                accounts   1          1               25000       2500      27500
+      1006 basha                managing   1          1               20000       2000      22000
+      1007 neeraj               testing    a          a               20000       2000      22000
+
+7 rows selected.
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> delete yashemp where eid=1007;
+
+1 row deleted.
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          NETSAL      BONUS      TOTAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b               12000       1440      13440
+      1002 chai                 technical  b          a               15000       1500      16500
+      1003 Dhamu                Production a          b               10000       1200      11200
+      1004 Hema                 Assembling c          b               17000       1700      18700
+      1005 pooji                accounts   1          1               25000       2500      27500
+      1006 basha                managing   1          1               20000       2000      22000
+
+6 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          NETSAL      BONUS      TOTAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b               12000       1440      13440
+      1002 chai                 technical  b          a               15000       1500      16500
+      1003 Dhamu                Production a          b               10000       1200      11200
+      1004 Hema                 Assembling c          b               17000       1700      18700
+      1005 pooji                accounts   1          1               25000       2500      27500
+      1006 basha                managing   1          1               20000       2000      22000
+      1007 neeraj               testing    a          a               20000       2000      22000
+
+7 rows selected.
+
+
+
+
+SQL> insert into yashemp(eid,ename,dept)values(1008,'sai','testing');
+
+1 row created.
+
+SQL> select * from yashemp;
+
+       EID ENAME                DEPT       SECTOR     SHIFT          NETSAL      BONUS      TOTAL
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ----------
+      1001 rasi                 technical  a          b               12000       1440      13440
+      1002 chai                 technical  b          a               15000       1500      16500
+      1003 Dhamu                Production a          b               10000       1200      11200
+      1004 Hema                 Assembling c          b               17000       1700      18700
+      1005 pooji                accounts   1          1               25000       2500      27500
+      1006 basha                managing   1          1               20000       2000      22000
+      1008 sai                  testing
+      1007 neeraj               testing    a          a               20000       2000      22000
+
+8 rows selected.
+
+SQL> select min(total) from yashemp;
+
+MIN(TOTAL)
+----------
+     11200
+
+SQL> select max(total) from yashemp;
+
+MAX(TOTAL)
+----------
+     27500
+
+SQL> select avg(total) from yashemp;
+
+AVG(TOTAL)
+----------
+18762.8571
+
+SQL> select count(total) from yashemp;
+
+COUNT(TOTAL)
+------------
+           7
+
+SQL> select count(*) from yashemp;
+
+  COUNT(*)
+----------
+         8
+
+SQL> select sum(bonus) from yashemp;
+
+SUM(BONUS)
+----------
+     12340
+

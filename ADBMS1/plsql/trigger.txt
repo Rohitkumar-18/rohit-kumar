@@ -1,0 +1,59 @@
+create table stu
+(sno number,
+name varchar2(20),
+m number,
+e number,
+c number,
+total number,
+avg number
+);
+
+insert into stu(sno,name,m,e,c)values(&sno,'&name',&m,&e,&c);
+
+
+
+create trigger t1 after insert or update of m,c,e on stu
+begin
+update stu set total=m+e+c;
+update stu set avg=total/3;
+end;
+
+
+
+select * from stu;
+
+       SNO NAME                          M          E          C      TOTAL        AVG
+---------- -------------------- ---------- ---------- ---------- ---------- ----------
+         1 dd                           34         56         67        157 52.3333333
+         4 hh                           45         54         66        165         55
+        77 jj                           67         98         89        254 84.6666667
+        78 rrr                          67         78         89        234         78
+
+
+
+create view v2 as select sno,name,m,e,c from stu;
+
+select * from v2;
+
+       SNO NAME                          M          E          C
+---------- -------------------- ---------- ---------- ----------
+         1 dd                           34         56         67
+         4 hh                           45         54         66
+        77 jj                           67         98         89
+        78 rrr                          67         78         89
+
+create view v1 as select * from stu;
+
+select * from v1;
+
+       SNO NAME                          M          E          C      TOTAL        AVG
+---------- -------------------- ---------- ---------- ---------- ---------- ----------
+         1 dd                           34         56         67        157 52.3333333
+         4 hh                           45         54         66        165         55
+        77 jj                           67         98         89        254 84.6666667
+        78 rrr                          67         78         89        234         78
+
+
+SQL> drop view v1;
+
+View dropped.

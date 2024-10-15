@@ -1,0 +1,20 @@
+    declare
+    n number:=&n;
+    d number;
+    m number;
+    r number:=0;
+    begin
+    m:=n;
+    while(n>0)
+    loop
+   d:=mod(n,10);
+   r:=(r*10)+d;
+   n:=floor(n/10);
+   end loop;
+   if(m=r) then
+   dbms_output.put_line('Palindrome');
+   else
+   dbms_output.put_line('Not Palindrome');
+   end if;
+   end;
+   /

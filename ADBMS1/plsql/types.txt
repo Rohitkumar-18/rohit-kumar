@@ -1,0 +1,49 @@
+create or replace TYPE address As object
+(house_no varchar2(10),
+street varchar2(30),
+city varchar2(20),
+state varchar2(10),
+pincode varchar2(10)
+);
+/
+
+
+
+create or replace TYPE customer As object
+(code number(5),
+name varchar2(30),
+contact_no varchar2(12),
+addr address,
+member procedure display
+);
+/
+
+
+set serveroutput on;
+declare 
+residence address;
+begin
+residence:=address('118A','G.M.ROAD','Palamaner','A.P','517408');
+dbms_output.put_line('House No: '||residence.house_no);
+dbms_output.put_line('Street: '||residence.street);
+dbms_output.put_line('City: '||residence.city);
+dbms_output.put_line('State: '||residence.state);
+dbms_output.put_line('Pin Code: '||residence.pincode);
+end;
+/
+
+
+
+
+create table student1(id number(5) unique,name varchar2(10),course varchar2(6));
+create table student2(id number(5) ,name varchar2(10) not null,course varchar2(6));
+create table student3(id number(5) primary key,name varchar2(10),course varchar2(6));
+create table student4(id number(5) references student3(id),name varchar2(10),course varchar2(6));
+create table student5(id number(5) ,name varchar2(10),marks number(6)check(marks>=50));
+
+
+
+
+
+
+insert into student5 values(&id,'&name',&marks);

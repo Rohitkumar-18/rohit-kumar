@@ -1,0 +1,67 @@
+Write a  PL/SQL  program to program for OVERDRAFT exception for a sample banking applications
+
+CREATE TABLE BANK_ACCOUNTS (
+    account_id NUMBER PRIMARY KEY,
+    account_holder VARCHAR2(50),
+    balance NUMBER
+);
+
+-- Insert sample data
+INSERT INTO BANK_ACCOUNTS (account_id, account_holder, balance) VALUES (1, 'John Doe', 1500);
+INSERT INTO BANK_ACCOUNTS (account_id, account_holder, balance) VALUES (2, 'Jane Smith', 1000);
+COMMIT;
+
+
+CREATE OR REPLACE PROCEDURE withdraw_money(
+    p_account_id IN NUMBER,
+    p_amount IN NUMBER
+) AS
+    v_balance NUMBER;
+BEGIN
+    
+    SELECT balance INTO v_balance
+    FROM BANK_ACCOUNTS
+    WHERE account_id = p_account_id;
+
+    IF v_balance >= p_amount THEN
+        -- Update the balance if sufficient funds
+        UPDATE BANK_ACCOUNTS
+        SET balance = balance - p_amount
+        WHERE account_id = p_account_id;
+        COMMIT;
+        DBMS_OUTPUT.PUT_LINE('Withdrawal successful. New balance: ' || (v_balance - p_amount));
+    ELSE
+        RAISE_APPLICATION_ERROR(-20001, 'Insufficient funds. Withdrawal amount exceeds available balance.');
+    END IF;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Account not found.');
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20003, 'An unexpected error occurred: ' || SQLERRM);
+END;
+/
+Procedure created.
+
+BEGIN
+    withdraw_money(1, 500); 
+    EXCEPTION
+    WHEN OTHERS THEN
+         DBMS_OUTPUT.PUT_LINE('ERROR: ' || SQLERRM);
+END;
+/
+Withdrawal successful. New balance: 1000
+
+PL/SQL procedure successfully completed.
+
+
+BEGIN
+    withdraw_money(1, 2000);
+    EXCEPTION
+    WHEN OTHERS THEN
+         DBMS_OUTPUT.PUT_LINE('ERROR: ' || SQLERRM);
+END;
+/
+ERROR: ORA-20003: An unexpected error occurred: ORA-20001: Insufficient funds.
+Withdrawal amount exceeds available balance.
+
+SET SERVEROUTPUT ON;

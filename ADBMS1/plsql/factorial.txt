@@ -1,0 +1,33 @@
+Write a  PL/SQL  program to find the factorial number using function 
+
+CREATE OR REPLACE FUNCTION factorial(num IN NUMBER) RETURN NUMBER IS
+    result NUMBER := 1;
+BEGIN
+    IF num < 0 THEN
+        RETURN NULL;
+    ELSIF num = 0 OR num = 1 THEN
+        RETURN 1;
+    ELSE
+        FOR i IN 2..num LOOP
+            result := result * i;
+        END LOOP;
+        RETURN result;
+    END IF;
+END factorial;
+/
+
+
+
+DECLARE
+    input_number NUMBER := 5; -- Change this value to test with different numbers
+    result_factorial NUMBER;
+BEGIN
+    result_factorial :=factorial(input_number);
+    DBMS_OUTPUT.PUT_LINE('The factorial of ' || input_number || ' is ' || result_factorial);
+END;
+/
+
+OUTPUT
+The factorial of 5 is 120
+
+PL/SQL procedure successfully completed.

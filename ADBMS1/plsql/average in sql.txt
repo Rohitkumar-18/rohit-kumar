@@ -1,0 +1,10 @@
+declare
+x number:=&x;
+y number:=&y;
+z number:=&z;
+av number;
+begin
+av:=(x+y+z)/3;
+dbms_output.put_line(av);
+end;
+ /

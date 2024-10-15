@@ -1,0 +1,17 @@
+CREATE TABLE employees (
+    employee_id NUMBER PRIMARY KEY,     employee_name VARCHAR2(100),
+    phone_numbers phone_numbers_varray_type
+);
+ 
+
+INSERT INTO employees (employee_id, employee_name, phone_numbers)
+VALUES (1, 'rohit kumar', phone_numbers_varray_type('123-456-7890', '456-789-1234'));
+INSERT INTO employees (employee_id, employee_name, phone_numbers)
+VALUES (2, 'mohan', phone_numbers_varray_type('944-000-3871'));
+
+
+
+
+
+SELECT employee_id, employee_name, phone_numbers FROM employees;
+

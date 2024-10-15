@@ -1,0 +1,60 @@
+CREATE TABLE CUSTOMER("_Meter Number" varchar2(4),                                                                                                                                    create table customers118("Meter Number" varchar2(4),
+"Meter Type" character(1),
+"Previous Reading" Number(5),
+"Current Reading" Number(5),
+"Customer Type" character(1),
+"Last Bill Payment" character(1) check("Last Bill Payment"='Y' OR "Last Bill Payment"='N'));
+
+
+create table bill("Meter Number" varchar2(4) PRIMARY KEY,
+units number,
+rate number,
+amount number,
+surcharge number,
+Excise Number,
+net number);
+
+insert into customers118 values(1000,'s',3000,5000,'a','');
+
+create or replace procedure calculatebill as
+    v_customer customers118%rowtype;
+    v_bill bill%rowtype;
+
+    cursor c1 is select * from customers118;
+    rate number(3,2);
+    units number;
+    amount number;
+    surcharge number;
+    Excise number;
+    net number;
+
+begin
+    delete from bill;
+    for v_customer in c1 loop
+
+        select decode(v_customer."Customer Type", 
+                       'A', 1, 
+                       'T', 1.25, 
+                       'C', 1.50, 
+                       'R', 1.30) 
+        into rate
+        from dual;
+
+
+        select decode(v_customer."Meter Type", 
+                       'T', 10, 
+                       'S', 5) 
+        into surcharge
+        from dual;
+
+        units := v_customer."Current Reading" - v_customer."Previous Reading";
+        amount := rate * units;
+        surcharge := surcharge * amount;
+        Excise := (amount + surcharge) * 30 / 100;
+        net := amount + surcharge + Excise;
+
+
+        insert into bill 
+        values (v_customer."Meter Number", units, rate, amount, surcharge, Excise, net);
+    end loop;
+end;
